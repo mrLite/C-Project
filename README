@@ -1,0 +1,9 @@
+Stationaarisen tilan lämmönjohtumisyhtälö kahdessa ulottuvuudessa on
+
+d2T(x,y) /dx2 + d2T(x,y)/dy2 = 0.
+
+Sen ratkaisu antaa lämpötilan tasapainojakauman mielivaltaisessa kaksiulotteisessa kappaleessa, kun reuna-ehdot on tunnettu. Yhtälön voi ratkaista numeerisesti hyvin yksinkertaisesti seuraavalla tavalla. Jaa haluttu tila neliölliseen hilaan. Tee mikä tahansa arvaus ratkaisulle T0(x,y), missä x ja y ovat nyt diskreettejä pisteitä neliöllisessä hilassa. Sen jälkeen iteroi ratkaisua siten, että jokaisessa pisteessä uuden iteraatio-askeleen i+1 uusi arvo Ti+1 lasketaan kaavalla
+
+Ti+1(x,y) = 1/4 (Ti(x+1,y) + Ti(x-1,y) + Ti(x,y+1) + Ti(x,y-1)
+
+eli yksinkertaisesti keskiarvona neljän lähimmän naapuripisteen lämpötilasta edellisellä iteraatio-askeleella. Kirjoita ohjelma, joka ratkaisee lämmönjohtumisyhtälön kahdessa ulottuvuudessa suorakulmaisessa kappaleessa, jonka korkeus on 2 m ja leveys 1 m. Suorakulmion pohjalla ja sivuilla lämpötila on 1000 K, mutta sen yläreunalla 0 K. Mikä on keskilämpötila kappaleessa, kun tasapaino on saavutettu?
