@@ -1,0 +1,9 @@
+# This is the setting file
+# These are comments
+width 1000.0
+height 2000.0
+grid_size 1.0
+temp_left 1000
+temp_right 1000
+temp_bottom 1000
+temp_top 0
