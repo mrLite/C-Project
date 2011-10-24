@@ -9,6 +9,8 @@ int temp_left, temp_top, temp_right, temp_bottom;
 
 int main(int argc, char** argv) {
 	FILE* s_fp;
+	double* t1;
+	double* t2;
 	
 	if(argc <= 1) {
 		// should print the usage message here, if no parameters are given.
