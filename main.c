@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "read_data.h"
 
 // global variables
@@ -24,9 +22,11 @@ int main(int argc, char** argv) {
 		return EXIT_FAILURE;
 	}
 	
+	read_data(s_fp, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
 	// this is where the magic happens
 		
 	fclose(s_fp);
 	
-	return EXIT_SUCCESS
+	return EXIT_SUCCESS;
 }
