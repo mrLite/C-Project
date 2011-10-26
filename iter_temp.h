@@ -2,7 +2,7 @@
 #define __ITER_TEMP_H__
 
 // calculates the average temperature of the object
-double average_temp(double* t);
+double average_temp(double* t, int w_size, int h_size);
 
 // calculates next iteration of temperatures from t1 to t2
 void iterate_temp(double* t1, double* t2);
