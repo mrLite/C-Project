@@ -22,8 +22,9 @@ int main(int argc, char** argv) {
 		return EXIT_FAILURE;
 	}
 	
-	read_data(s_fp, &width, &height, NULL, NULL, NULL, NULL, NULL);
-	printf("%lf %lf %lf %lf\n", width, height, grid_size, temp_left);
+	read_data(s_fp);
+	//printf("%f %f %f %d %d %d %d\n", width, height, grid_size, temp_left, 
+	//		temp_right, temp_top, temp_bottom);
 
 	// this is where the magic happens
 		
