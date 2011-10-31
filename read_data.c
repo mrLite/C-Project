@@ -9,6 +9,11 @@ void read_data(FILE* fp){
   double num, doub;
   int len, integ;
   
+  //Initialize variables
+  width = 0; height = 0; grid_size = 0;
+  temp_left = 0; temp_top = 0; temp_right = 0; temp_bottom = 0;
+
+  
   fseek(fp, 0, SEEK_SET); //Set to stream start
 
   while(fgets(string, sizeof(string), fp) != NULL){
