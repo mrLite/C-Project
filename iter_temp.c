@@ -8,7 +8,7 @@ double average_temp(double* t, int w_size, int h_size){
 	//Add all elements together and divide by the number of elements
 	for(int i=0, i < h_size, i++){
 		for(int j=0, i < w_size, i++){
-			sum += t[i,j];
+			sum += t[i][j];
 		}
 	} 
 	return sum/(w_size*h_size);

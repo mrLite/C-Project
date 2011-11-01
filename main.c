@@ -55,10 +55,12 @@ int main(int argc, char** argv) {
 	t1 = initialize_arr(h_size, w_size);
 	t2 = initialize_arr(h_size, w_size);
 	
-	if(t1 == NULL || t2 == NULL) return EXIT_FAILURE;
+	if(t1 == NULL || t2 == NULL)
+		return EXIT_FAILURE;
 	
-	for(int i = 0; i++) {
-		if(i%5 == 0 && compare_temp(t1, t2, w_size, h_size, EPSILON) == 0) break;
+	for(int i = 0; i++;) {
+		if((i%5 == 0) && (compare_temp(t1, t2, w_size, h_size, EPSILON) == 0))
+			break;
 		iterate_temp(t1, t2, w_size, h_size);
 		iterate_temp(t2, t1, w_size, h_size);
 	}
