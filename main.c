@@ -18,7 +18,7 @@ iter_temp.c
 // data from the settings file should be read into these.
 double width, height, grid_size;
 int temp_left, temp_top, temp_right, temp_bottom;
-double EPSILON = 1;
+double EPSILON = 0.01;
 
 int main(int argc, char** argv) {
 	FILE* s_fp;
