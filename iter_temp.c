@@ -8,6 +8,8 @@ the average temperature of the object and the change in the temperature between 
 #include <stdio.h>
 
 // initializes temperature array
+// parameters: array size (w and h) and temperatures on the sides of the object.
+// returns: initialized array.
 Temp** initialize_temp(int w, int h, int temp_left, int temp_top, int temp_right, int temp_bottom){
 	
 	//initialize

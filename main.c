@@ -6,6 +6,7 @@ Function usage from the other files:
 read_data.c
 	read_data();
 iter_temp.c
+	initialize_temp();
 	iterate_temp();
 	compare_temp();
 	average_temp();
