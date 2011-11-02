@@ -18,7 +18,7 @@ iter_temp.c
 // data from the settings file should be read into these.
 double width, height, grid_size;
 int temp_left, temp_top, temp_right, temp_bottom;
-double EPSILON = 0.1;
+double EPSILON = 0.00001;
 
 int main(int argc, char** argv) {
 	FILE* s_fp;
@@ -56,8 +56,10 @@ int main(int argc, char** argv) {
 	for(int i=1; i<100000; i++) {
 		iterate_temp(ptp_temp1, ptp_temp2, w_size, h_size);
 		iterate_temp(ptp_temp2, ptp_temp1, w_size, h_size);
-		if((i%100 == 0) ){
+		if((i%1000 == 0) ){
+			
 			printf("Number of iterations: %d\n", i*2);
+			printf("Average temperature is: %lf\n", average_temp(ptp_temp1, w_size, h_size));
 			if (compare_temp(ptp_temp1, ptp_temp2, w_size, h_size, EPSILON) == 0) break;
 		}
 	}
