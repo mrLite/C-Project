@@ -37,7 +37,7 @@ Temp** initialize_temp(int w, int h, int temp_left, int temp_top, int temp_right
 		else if(x == w-1)
 			array[y][x].t = (double)temp_right;
 		else
-			array[y][x].t = 850.0;
+			array[y][x].t = 0.0;
 	  	}
 	}
 	return array;
