@@ -19,24 +19,6 @@ double width, height, grid_size;
 int temp_left, temp_top, temp_right, temp_bottom;
 double EPSILON = 0.0001;
 
-// void initialize_arr(double t[][], int h_size, int w_size) {	
-// 	for(int h = 0; h < h_size; ++h) {
-// 		for(int w = 0; w < w_size; ++w) {
-// 			if(h == 0)
-// 				t[h][w] = (double)temp_top;
-// 			else if(h == h_size-1)
-// 				t[h][w] = (double)temp_bottom;
-// 			else if(w == 0)
-// 				t[h][w] = (double)temp_left;
-// 			else if(w == w_size-1)
-// 				t[h][w] = (double)temp_right;
-// 			else
-// 				t[h][w] = 0.0;
-// 		}
-// 	}
-// 	return;
-// }
-
 int main(int argc, char** argv) {
 	FILE* s_fp;
 	int w_size;
@@ -61,12 +43,17 @@ int main(int argc, char** argv) {
 	
 	Temp** ptp_temp1; 
 	Temp** ptp_temp2; 
+	
 	ptp_temp1=initialize_temp(w_size, h_size, temp_left, temp_top, temp_right, temp_bottom);
 	ptp_temp2=initialize_temp(w_size, h_size, temp_left, temp_top, temp_right, temp_bottom);
 	
 	
 	if(ptp_temp1 == NULL || ptp_temp2 == NULL)
 		return EXIT_FAILURE;
+		
+	ptp_temp1 = initialize_temp(w_size, h_size, temp_left, temp_top, temp_right, temp_bottom);
+	ptp_temp2 = initialize_temp(w_size, h_size, temp_left, temp_top, temp_right, temp_bottom);
+
 	
 	// Iterates the temperature of the object until it reaches balance, that is, it doesn't change anymore.
 	// Compares the temperature once every five iterations.
