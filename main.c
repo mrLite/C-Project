@@ -23,6 +23,8 @@ int main(int argc, char** argv) {
 	FILE* s_fp;
 	int w_size;
 	int h_size;
+	Temp** ptp_temp1; 
+	Temp** ptp_temp2;
 	
 	if(argc <= 1) {
 		// should print the usage message here, if no parameters are given.
@@ -41,16 +43,6 @@ int main(int argc, char** argv) {
 	w_size = (int)width/grid_size;
 	h_size = (int)height/grid_size;
 	
-	Temp** ptp_temp1; 
-	Temp** ptp_temp2; 
-	
-	ptp_temp1=initialize_temp(w_size, h_size, temp_left, temp_top, temp_right, temp_bottom);
-	ptp_temp2=initialize_temp(w_size, h_size, temp_left, temp_top, temp_right, temp_bottom);
-	
-	
-	if(ptp_temp1 == NULL || ptp_temp2 == NULL)
-		return EXIT_FAILURE;
-		
 	ptp_temp1 = initialize_temp(w_size, h_size, temp_left, temp_top, temp_right, temp_bottom);
 	ptp_temp2 = initialize_temp(w_size, h_size, temp_left, temp_top, temp_right, temp_bottom);
 
