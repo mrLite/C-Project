@@ -59,39 +59,11 @@ int main(int argc, char** argv) {
 	w_size = (int)width/grid_size;
 	h_size = (int)height/grid_size;
 	
-	double t1[h_size][w_size];
-	double t2[h_size][w_size];
+	Temp** ptp_temp1; 
+	Temp** ptp_temp2; 
+	ptp_temp1=initialize_temp(w_size, h_size, temp_left, temp_top, temp_right, temp_bottom);
+	ptp_temp2=initialize_temp(w_size, h_size, temp_left, temp_top, temp_right, temp_bottom);
 	
-	for(int h = 0; h < h_size; ++h) {
-		for(int w = 0; w < w_size; ++w) {
-			if(h == 0)
-				t1[h][w] = (double)temp_top;
-			else if(h == h_size-1)
-				t1[h][w] = (double)temp_bottom;
-			else if(w == 0)
-				t1[h][w] = (double)temp_left;
-			else if(w == w_size-1)
-				t1[h][w] = (double)temp_right;
-			else
-				t1[h][w] = 0.0;
-		}
-	}
-	for(int h = 0; h < h_size; ++h) {
-		for(int w = 0; w < w_size; ++w) {
-			if(h == 0)
-				t2[h][w] = (double)temp_top;
-			else if(h == h_size-1)
-				t2[h][w] = (double)temp_bottom;
-			else if(w == 0)
-				t2[h][w] = (double)temp_left;
-			else if(w == w_size-1)
-				t2[h][w] = (double)temp_right;
-			else
-				t2[h][w] = 0.0;
-		}
-	}
-	// t1 = initialize_arr(t1, h_size, w_size);
-	// t2 = initialize_arr(t2, h_size, w_size);
 	
 	if(t1 == NULL || t2 == NULL)
 		return EXIT_FAILURE;
@@ -99,13 +71,13 @@ int main(int argc, char** argv) {
 	// Iterates the temperature of the object until it reaches balance, that is, it doesn't change anymore.
 	// Compares the temperature once every five iterations.
 	for(int i = 0; i++;) {
-		if((i%5 == 0) && (compare_temp(t1, t2, w_size, h_size, EPSILON) == 0))
+		if((i%5 == 0) && (compare_temp(ptp_temp1, ptp_temp2, w_size, h_size, EPSILON) == 0))
 			break;
-		iterate_temp(t1, t2, w_size, h_size);
-		iterate_temp(t2, t1, w_size, h_size);
+		iterate_temp(ptp_temp1, ptp_temp2, w_size, h_size);
+		iterate_temp(ptp_temp1, ptp_temp2, w_size, h_size);
 	}
 	
-	double temp = average_temp(t1, w_size, h_size);
+	double temp = average_temp(ptp_temp1, w_size, h_size);
 	printf("Average temperature is: %lf\n", temp);
 	
 	fclose(s_fp);
