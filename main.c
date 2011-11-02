@@ -65,7 +65,7 @@ int main(int argc, char** argv) {
 	ptp_temp2=initialize_temp(w_size, h_size, temp_left, temp_top, temp_right, temp_bottom);
 	
 	
-	if(t1 == NULL || t2 == NULL)
+	if(ptp_temp1 == NULL || ptp_temp2 == NULL)
 		return EXIT_FAILURE;
 	
 	// Iterates the temperature of the object until it reaches balance, that is, it doesn't change anymore.
