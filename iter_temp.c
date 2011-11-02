@@ -5,6 +5,7 @@ the average temperature of the object and the change in the temperature between 
 #include "iter_temp.h"
 #include <math.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 // initializes temperature array
 Temp** initialize_temp(int w, int h, int temp_left, int temp_top, int temp_right, int temp_bottom){
@@ -17,7 +18,7 @@ Temp** initialize_temp(int w, int h, int temp_left, int temp_top, int temp_right
 	array = malloc(sizeof(double*) * h);
 
 	//iterate over 'y' dimension
-	for(y=0;y<h;y++){
+	for(y=0; y<h; y++){
 	  //malloc the 'x' dimension
 	  array[y] = malloc(sizeof(double) * w);
 
@@ -44,28 +45,27 @@ Temp** initialize_temp(int w, int h, int temp_left, int temp_top, int temp_right
 // calculates the average temperature of the object
 // parameters: two-dimensional double array t, and the array height and width
 // returns: the average temperature of the object
-double average_temp(Temp** temp, int w, int h){
+double average_temp(Temp** t1, int w, int h){
 	double sum = 0;
-	
 	//Add all elements together and divide by the number of elements
+	
 	for(int i=0; i < h; i++){
-		for(int j=0; i < w; i++){
-			sum += temp[i][j].t;
+		for(int j=0; j < w; j++){
+			sum += t1[i][j].t;
 		}
 	} 
-	return sum/(w*h);
+	return sum/ (w*h);
 }
 
 // calculates next iteration of temperatures from t1 to t2
 // parameters: two two-dimensional double arrays of the same size, and the array height and width
 void iterate_temp(Temp** t1, Temp** t2, int w, int h){
 	
-	for(int i=1; i < w-1; i++){
-		for(int j=1; i < h-1; i++){
-			t2[i][j].t = 1/4*( t1[i+1][j].t + t1[i-1][j].t + t1[i][j+1].t + t1[i][j-1].t);
+	for(int i=1; i < h-1; i++){
+		for(int j=1; j < w-1; j++){
+			t2[i][j].t = 0.25*( t1[i+1][j].t + t1[i-1][j].t + t1[i][j+1].t + t1[i][j-1].t);
 		}
-	}
-	
+	}	
 }
 
 // returns 0 if temperature difference between t1 and t2 is smaller than e, otherwise 1.
@@ -74,7 +74,7 @@ int compare_temp(Temp** t1, Temp** t2, int w, int h, double e){
 	
 	//loops through all elements and compare difference to e
 	for(int i=1; i < h-1; i++){
-		for(int j=1; i < w-1; i++){
+		for(int j=1; j < w-1; j++){
 			
 			//calculate absolute value
 			double dif=fabs(t2[i][j].t-t1[i][j].t);
@@ -82,6 +82,6 @@ int compare_temp(Temp** t1, Temp** t2, int w, int h, double e){
 			if(dif >= e) return 1; 
 		}
 	}
-return 0;
+	return 0;
 	
 }

@@ -17,7 +17,7 @@ iter_temp.c
 // data from the settings file should be read into these.
 double width, height, grid_size;
 int temp_left, temp_top, temp_right, temp_bottom;
-double EPSILON = 0.0001;
+double EPSILON = 1;
 
 int main(int argc, char** argv) {
 	FILE* s_fp;
@@ -42,18 +42,23 @@ int main(int argc, char** argv) {
 	
 	w_size = (int)width/grid_size;
 	h_size = (int)height/grid_size;
+	printf("w_size of grid: %d\n", w_size);
+	printf("h_size of grid: %d\n", h_size);
 	
 	ptp_temp1 = initialize_temp(w_size, h_size, temp_left, temp_top, temp_right, temp_bottom);
 	ptp_temp2 = initialize_temp(w_size, h_size, temp_left, temp_top, temp_right, temp_bottom);
-
+	
 	
 	// Iterates the temperature of the object until it reaches balance, that is, it doesn't change anymore.
 	// Compares the temperature once every five iterations.
-	for(int i = 0; i++;) {
-		if((i%5 == 0) && (compare_temp(ptp_temp1, ptp_temp2, w_size, h_size, EPSILON) == 0))
-			break;
+	
+	for(int i=1; i<100000; i++) {
 		iterate_temp(ptp_temp1, ptp_temp2, w_size, h_size);
-		iterate_temp(ptp_temp1, ptp_temp2, w_size, h_size);
+		iterate_temp(ptp_temp2, ptp_temp1, w_size, h_size);
+		if((i%5 == 0) ){
+			printf("Number of iterations: %d\n", i*2);
+			if (compare_temp(ptp_temp1, ptp_temp2, w_size, h_size, EPSILON) == 0) break;
+		}
 	}
 	
 	double temp = average_temp(ptp_temp1, w_size, h_size);

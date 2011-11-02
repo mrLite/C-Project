@@ -7,10 +7,10 @@ typedef struct{
 
 Temp** initialize_temp(int w, int h, int temp_left, int temp_top, int temp_right, int temp_bottom);
 
-double average_temp(Temp** t, int w_size, int h_size);
+double average_temp(Temp** t1, int w, int h);
 
-void iterate_temp(Temp** t1, Temp** t2, int w_size, int h_size);
+void iterate_temp(Temp** t1, Temp** t2, int w, int h);
 
-int compare_temp(Temp** t1, Temp** t2, int w_size, int h_size, double e);
+int compare_temp(Temp** t1, Temp** t2, int w, int h, double e);
 
 #endif
