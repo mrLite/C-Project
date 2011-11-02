@@ -28,8 +28,9 @@ int main(int argc, char** argv) {
 	Temp** ptp_temp2;
 	
 	if(argc <= 1) {
-		// should print the usage message here, if no parameters are given.
-		printf("Give me a setting file!\n");
+		// Prints the usage message here, if no parameters are given.
+		printf("Usage:\n");
+		printf("./AVG_TEMP setting_file\n");
 		return EXIT_FAILURE;
 	}
 	
