@@ -1,0 +1,17 @@
+USAGE
+The program is compiled using the make tool from the command line.
+Command 'make' creates an executable AVG_TEMP, which is then run with the settings file as a command line parameter.
+
+The setting file should be of format:
+
+width 1000.0
+height 2000.0
+grid_size 1.0
+temp_left 1000
+temp_right 1000
+temp_bottom 1000
+temp_top 0
+
+Where width and height denotes the object size in centimeters, and grid_size is the edge size of a grid cell in centimeters.
+Temperatures are in kelvins and can be omitted, in which case they are initialized to zero.
+The setting file can include comments, which are lines starting with symbol '#'.
