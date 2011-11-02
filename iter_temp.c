@@ -23,7 +23,7 @@ Temp** initialize_temp(int w, int h, int temp_left, int temp_top, int temp_right
 	for(y=0; y<h; y++){
 	  //malloc the 'x' dimension
 	  array[y] = malloc(sizeof(double) * w);
-
+	
 	  //iterate over the 'x' dimension
 	  for(x=0;x<w;x++){
 
@@ -37,10 +37,9 @@ Temp** initialize_temp(int w, int h, int temp_left, int temp_top, int temp_right
 		else if(x == w-1)
 			array[y][x].t = (double)temp_right;
 		else
-			array[y][x].t = 0.0;
+			array[y][x].t = 850.0;
 	  	}
 	}
-	
 	return array;
 }
 
