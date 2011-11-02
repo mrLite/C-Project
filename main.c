@@ -44,8 +44,6 @@ int main(int argc, char** argv) {
 	
 	w_size = (int)width/grid_size;
 	h_size = (int)height/grid_size;
-	printf("w_size of grid: %d\n", w_size);
-	printf("h_size of grid: %d\n", h_size);
 	
 	ptp_temp1 = initialize_temp(w_size, h_size, temp_left, temp_top, temp_right, temp_bottom);
 	ptp_temp2 = initialize_temp(w_size, h_size, temp_left, temp_top, temp_right, temp_bottom);
@@ -53,20 +51,23 @@ int main(int argc, char** argv) {
 	
 	// Iterates the temperature of the object until it reaches balance, that is, it doesn't change anymore.
 	// Compares the temperature once every five iterations.
-	
 	for(int i=1; i<100000; i++) {
 		iterate_temp(ptp_temp1, ptp_temp2, w_size, h_size);
 		iterate_temp(ptp_temp2, ptp_temp1, w_size, h_size);
 		if((i%1000 == 0) ){
-			
-			printf("Number of iterations: %d\n", i*2);
-			printf("Average temperature is: %lf\n", average_temp(ptp_temp1, w_size, h_size));
 			if (compare_temp(ptp_temp1, ptp_temp2, w_size, h_size, EPSILON) == 0) break;
 		}
 	}
 	
 	double temp = average_temp(ptp_temp1, w_size, h_size);
-	printf("Average temperature is: %lf\n", temp);
+	printf("Size of the object: height: %.1lf cm, width: %.1lf cm.\n", width, height);
+	printf("Size of the grid cell: %.1lf cm.\n", grid_size);
+	printf("Temperatures:\n");
+	printf("\tTop: %d K\n", temp_top);
+	printf("\tRight: %d K\n", temp_right);
+	printf("\tBottom: %d K\n", temp_bottom);
+	printf("\tLeft: %d K\n", temp_left);
+	printf("Average temperature is: %lf K\n", temp);
 	
 	fclose(s_fp);
 	
