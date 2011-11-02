@@ -1,8 +1,15 @@
+/*
+The file contains the basic functions for reading data from the settings file.
+*/
 #include "read_data.h"
 
 extern double width, height, grid_size;
 extern int temp_left, temp_top, temp_right, temp_bottom;
 
+// reads data from the settings file to global variables:
+// 		double width, height, grid_size
+// 		int temp_left, temp_top, temp_right, temp_bottom
+// parameters: pointer to the settings file opened in the main function.
 void read_data(FILE* fp){
 	char string[30];
 	char id[15];

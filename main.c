@@ -1,3 +1,15 @@
+/*
+This is the main function of the program. It does the job of opening the settings file, and calling functions from the other files.
+It also contains the main loop for iterating each step of the temperature of the object.
+
+Function usage from the other files:
+read_data.c
+	read_data();
+iter_temp.c
+	iterate_temp();
+	compare_temp();
+	average_temp();
+*/
 #include "read_data.h"
 #include "iter_temp.h"
 
@@ -7,31 +19,26 @@ double width, height, grid_size;
 int temp_left, temp_top, temp_right, temp_bottom;
 double EPSILON = 0.0001;
 
-double* initialize_arr(int h_size, int w_size) {
-	double* t = malloc(sizeof(double)*h_size*w_size);
-	if(t == NULL) return NULL;
-	
-	for(int h = 0; h < h_size; ++h) {
-		for(int w = 0; w < w_size; ++w) {
-			if(h == 0)
-				t[h][w] = (double)temp_top;
-			else if(h == h_size-1)
-				t[h][w] = (double)temp_bottom;
-			else if(w == 0)
-				t[h][w] = (double)temp_left;
-			else if(w == w_size-1)
-				t[h][w] = (double)temp_right;
-			else
-				t[h][w] = 0.0;
-		}
-	}
-	return t;
-}
+// void initialize_arr(double t[][], int h_size, int w_size) {	
+// 	for(int h = 0; h < h_size; ++h) {
+// 		for(int w = 0; w < w_size; ++w) {
+// 			if(h == 0)
+// 				t[h][w] = (double)temp_top;
+// 			else if(h == h_size-1)
+// 				t[h][w] = (double)temp_bottom;
+// 			else if(w == 0)
+// 				t[h][w] = (double)temp_left;
+// 			else if(w == w_size-1)
+// 				t[h][w] = (double)temp_right;
+// 			else
+// 				t[h][w] = 0.0;
+// 		}
+// 	}
+// 	return;
+// }
 
 int main(int argc, char** argv) {
 	FILE* s_fp;
-	double* t1;
-	double* t2;
 	int w_size;
 	int h_size;
 	
@@ -52,12 +59,45 @@ int main(int argc, char** argv) {
 	w_size = (int)width/grid_size;
 	h_size = (int)height/grid_size;
 	
-	t1 = initialize_arr(h_size, w_size);
-	t2 = initialize_arr(h_size, w_size);
+	double t1[h_size][w_size];
+	double t2[h_size][w_size];
+	
+	for(int h = 0; h < h_size; ++h) {
+		for(int w = 0; w < w_size; ++w) {
+			if(h == 0)
+				t1[h][w] = (double)temp_top;
+			else if(h == h_size-1)
+				t1[h][w] = (double)temp_bottom;
+			else if(w == 0)
+				t1[h][w] = (double)temp_left;
+			else if(w == w_size-1)
+				t1[h][w] = (double)temp_right;
+			else
+				t1[h][w] = 0.0;
+		}
+	}
+	for(int h = 0; h < h_size; ++h) {
+		for(int w = 0; w < w_size; ++w) {
+			if(h == 0)
+				t2[h][w] = (double)temp_top;
+			else if(h == h_size-1)
+				t2[h][w] = (double)temp_bottom;
+			else if(w == 0)
+				t2[h][w] = (double)temp_left;
+			else if(w == w_size-1)
+				t2[h][w] = (double)temp_right;
+			else
+				t2[h][w] = 0.0;
+		}
+	}
+	// t1 = initialize_arr(t1, h_size, w_size);
+	// t2 = initialize_arr(t2, h_size, w_size);
 	
 	if(t1 == NULL || t2 == NULL)
 		return EXIT_FAILURE;
 	
+	// Iterates the temperature of the object until it reaches balance, that is, it doesn't change anymore.
+	// Compares the temperature once every five iterations.
 	for(int i = 0; i++;) {
 		if((i%5 == 0) && (compare_temp(t1, t2, w_size, h_size, EPSILON) == 0))
 			break;
